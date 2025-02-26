@@ -22,12 +22,12 @@ export function Button({
 }: {
   borderRadius?: string;
   children: React.ReactNode;
-  as?: unknown;
+  as?: string | number;
   containerClassName?: string;
   borderClassName?: string;
   duration?: number;
   className?: string;
-  [key: string]: unknown;
+  [key: string]: string | number;
 }) {
   return (
     <Component
@@ -81,9 +81,9 @@ export const MovingBorder = ({
   duration?: number;
   rx?: string;
   ry?: string;
-  [key: string]: unknown;
+  [key: string]: string | number;
 }) => {
-  const pathRef = useRef<unknown>();
+  const pathRef = useRef<string | number>();
   const progress = useMotionValue<number>(0);
 
   useAnimationFrame((time) => {
