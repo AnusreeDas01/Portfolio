@@ -1,7 +1,6 @@
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { CanvasRevealEffect } from "./ui/CanvasRevealEffect";
-import AceternityIcon from "./AceternityIcon"; // Assuming this is a separate component
 
 const Approach = () => {
   return (
@@ -132,8 +131,7 @@ const AceternityIcon = ({ order }: { order: string }) => {
   );
 };
 
-export default AceternityIcon;
-const Icon = ({ className, ...rest }: { className?: string }) => (
+export const Icon = ({ className, ...rest }: { className?: string }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
