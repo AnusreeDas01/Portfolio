@@ -14,8 +14,7 @@ declare module "@react-three/fiber" {
 }
 extend({ ThreeGlobe });
 
-// const RING_PROPAGATION_SPEED = 3;
-// const ASPECT_RATIO = 1.2;
+// Constants
 const CAMERA_Z = 300;
 
 type Position = {
@@ -93,7 +92,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
       buildData();
       buildMaterial();
     }
-  }, []);
+  }, [data]); // Dependency on data ensures rebuild on change
 
   const buildMaterial = () => {
     if (!globeRef.current) return;
@@ -139,26 +138,8 @@ export function Globe({ globeConfig, data }: WorldProps) {
     );
   };
 
-  useEffect(() => {
-    if (!globeRef.current || !globeData.length) return;
-
-    globeRef.current
-      .hexPolygonsData(countries.features)
-      .hexPolygonResolution(3)
-      .hexPolygonMargin(0.7)
-      .showAtmosphere(defaultProps.showAtmosphere)
-      .atmosphereColor(defaultProps.atmosphereColor)
-      .atmosphereAltitude(defaultProps.atmosphereAltitude)
-      .hexPolygonColor(() => defaultProps.polygonColor);
-
-    startAnimation();
-  }, useEffect(() => {
-  buildData();
-}, [globeData]); 
-
-
   const startAnimation = () => {
-    if (!globeRef.current) return;
+    if (!globeRef.current || !globeData.length) return;
 
     globeRef.current
       .arcsData(data)
@@ -177,6 +158,10 @@ export function Globe({ globeConfig, data }: WorldProps) {
       .pointColor((d) => d.color(1))
       .pointRadius(2);
   };
+
+  useEffect(() => {
+    startAnimation();
+  }, [globeData]); // Only start animation when globeData is ready
 
   return <threeGlobe ref={globeRef} />;
 }
