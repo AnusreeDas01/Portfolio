@@ -1,5 +1,14 @@
 {
   "compilerOptions": {
+     "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "jsx": "react",
+    "module": "esnext",
+    "target": "esnext",
+    "types": ["node"]
+    
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
