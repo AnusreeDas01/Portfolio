@@ -185,7 +185,7 @@ const AceternityIcon = ({ order }: { order: string }) => {
   );
 };
 
-export const Icon = ({ className, ...rest }: unknown) => {
+export const Icon = ({ className, ...rest }: string | number) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
