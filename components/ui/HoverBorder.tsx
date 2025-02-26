@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -14,15 +13,13 @@ export function HoverBorderGradient({
   duration = 1,
   clockwise = true,
   ...props
-}: React.PropsWithChildren<
-  {
-    as?: React.ElementType;
-    containerClassName?: string;
-    className?: string;
-    duration?: number;
-    clockwise?: boolean;
-  } & React.HTMLAttributes<HTMLElement>
->) {
+}: React.PropsWithChildren<{
+  as?: React.ElementType;
+  containerClassName?: string;
+  className?: string;
+  duration?: number;
+  clockwise?: boolean;
+} & React.HTMLAttributes<HTMLElement>>) {
   const [hovered, setHovered] = useState<boolean>(false);
   const [direction, setDirection] = useState<Direction>("TOP");
 
@@ -48,23 +45,21 @@ export function HoverBorderGradient({
     "radial-gradient(75% 181.15942028985506% at 50% 50%, #3275F8 0%, rgba(255, 255, 255, 0) 100%)";
 
   useEffect(() => {
-  if (!hovered) {
-    const interval = setInterval(() => {
-      setDirection((prevState) => rotateDirection(prevState));
-    }, duration * 1000);
+    if (!hovered) {
+      const interval = setInterval(() => {
+        setDirection((prevState) => rotateDirection(prevState));
+      }, duration * 1000);
 
-    return () => clearInterval(interval); 
-  }
-}, [hovered, duration, rotateDirection]);
+      return () => clearInterval(interval);
+    }
+  }, [hovered, duration, rotateDirection]);
 
-return (
+  return (
     <Tag
-{/*        onMouseEnter={() => {
-      setHovered(true);
-    }} */}
+      onMouseEnter={() => setHovered(true)} // Re-enabled this event handler.
       onMouseLeave={() => setHovered(false)}
       className={cn(
-        "relative flex rounded-full border  content-center bg-black/20 hover:bg-black/10 transition duration-500 dark:bg-white/20 items-center flex-col flex-nowrap gap-10 h-min justify-center overflow-visible p-px decoration-clone w-fit",
+        "relative flex rounded-full border content-center bg-black/20 hover:bg-black/10 transition duration-500 dark:bg-white/20 items-center flex-col flex-nowrap gap-10 h-min justify-center overflow-visible p-px decoration-clone w-fit",
         containerClassName
       )}
       {...props}
@@ -89,9 +84,7 @@ return (
         }}
         initial={{ background: movingMap[direction] }}
         animate={{
-          background: hovered
-            ? [movingMap[direction], highlight]
-            : movingMap[direction],
+          background: hovered ? [movingMap[direction], highlight] : movingMap[direction],
         }}
         transition={{ ease: "linear", duration: duration ?? 1 }}
       />
