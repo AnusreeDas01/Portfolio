@@ -224,6 +224,16 @@ export const companies = [
   },
 ];
 
+export interface WorkExperienceCard {
+  id: number;
+  title: string;
+  desc: string;
+  className: string;
+  thumbnail: string;
+  thumbnailWidth: number;
+  thumbnailHeight: number;
+}
+
 export const workExperience: WorkExperienceCard[] = [
   {
     id: 1,
