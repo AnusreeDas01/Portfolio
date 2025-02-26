@@ -164,7 +164,7 @@ const ShaderMaterial = ({
         case "uniform3f":
           preparedUniforms[uniformName] = {
             value: Array.isArray(uniform.value)
-              ? new THREE.Vector3().fromArray(flatten(uniform.value) as number[]).toArray() // Make sure it's a number[] here
+              ? new THREE.Vector3().fromArray(flatten(uniform.value).flat() as number[]).toArray() // Make sure it's a number[] here
               : new THREE.Vector3(uniform.value, uniform.value, uniform.value).toArray(),
             type: "3f",
           };
