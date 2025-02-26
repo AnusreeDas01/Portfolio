@@ -13,12 +13,12 @@ import { cn } from "@/lib/utils"; // Assuming cn is a utility for conditional cl
 interface ButtonProps {
   borderRadius?: string;
   children: React.ReactNode;
-  as?: React.ElementType; // Using React.ElementType for more flexible component types
+  as?: React.ElementType;
   containerClassName?: string;
   borderClassName?: string;
   duration?: number;
   className?: string;
-  [key: string]: any; // Ensures other props are allowed (e.g., style)
+  [key: string]: unknown; // Ensures other props are allowed (e.g., style)
 }
 
 export function Button({
@@ -72,7 +72,7 @@ interface MovingBorderProps {
   duration?: number;
   rx?: string;
   ry?: string;
-  [key: string]: any; // Allow other props
+  [key: string]: unknown; // Allow other props
 }
 
 export const MovingBorder = ({
