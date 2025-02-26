@@ -283,7 +283,8 @@ const ShaderMaterial = ({
     });
 
     return materialObject;
-  }, [size.width, size.height, source]);
+  }, const uniforms = useMemo(() => getUniforms(), [size.width, size.height, source, getUniforms]);
+
 
   return (
     <mesh ref={ref as string | number}>
