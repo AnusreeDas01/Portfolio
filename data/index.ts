@@ -224,13 +224,15 @@ export const companies = [
   },
 ];
 
-export const workExperience = [
+export const workExperience: WorkExperienceCard[] = [
   {
     id: 1,
     title: "Frontend Engineer Intern",
     desc: "Assisted to build dynamic web platform with React.js, improving user interactivity and experience.",
     className: "md:col-span-2",
     thumbnail: "/exp1.svg",
+    thumbnailWidth: 150,
+    thumbnailHeight: 150,
   },
   {
     id: 2,
@@ -238,6 +240,8 @@ export const workExperience = [
     desc: "Designed and developed a cross-platform mobile app for iOS and Android using React Native, Dart, and Flutter, ensuring seamless performance and user experience.",
     className: "md:col-span-2", // change to md:col-span-2
     thumbnail: "/exp2.svg",
+    thumbnailWidth: 150,
+    thumbnailHeight: 150,
   },
   {
     id: 3,
@@ -245,6 +249,8 @@ export const workExperience = [
     desc: "Built multiple projects using Next.js and React.js, gaining extensive hands-on experience through college assignments.",
     className: "md:col-span-2", // change to md:col-span-2
     thumbnail: "/exp3.svg",
+    thumbnailWidth: 150,
+    thumbnailHeight: 150,
   },
   {
     id: 4,
@@ -252,6 +258,8 @@ export const workExperience = [
     desc: "Exploring and refining skills in Prompt Engineering to craft effective AI interactions, optimize responses, and enhance user experiences through strategic prompts.",
     className: "md:col-span-2",
     thumbnail: "/exp4.svg",
+    thumbnailWidth: 150,
+    thumbnailHeight: 150,
   },
 ];
 
