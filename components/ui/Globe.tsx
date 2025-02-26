@@ -4,7 +4,7 @@ import { Color } from "three";
 import ThreeGlobe from "three-globe";
 import { Object3DNode, Canvas, extend } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import countries from "@/data/globe.json";
+// import countries from "@/data/globe.json";
 
 // Extend ThreeGlobe to be used in R3F
 declare module "@react-three/fiber" {
@@ -87,13 +87,15 @@ export function Globe({ globeConfig, data }: WorldProps) {
     ...globeConfig,
   };
 
+  // Rebuild data and material when `data` changes
   useEffect(() => {
     if (globeRef.current) {
       buildData();
       buildMaterial();
     }
-  }, [data]); // Dependency on data ensures rebuild on change
+  }, [data]);
 
+  // Update the material for the globe
   const buildMaterial = () => {
     if (!globeRef.current) return;
 
@@ -109,6 +111,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
     globeMaterial.shininess = defaultProps.shininess || 0.9;
   };
 
+  // Build data points from the provided arcs data
   const buildData = () => {
     const points = data.flatMap((arc) => {
       const rgb = hexToRgb(arc.color)!;
@@ -138,6 +141,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
     );
   };
 
+  // Start the animation when globe data is ready
   const startAnimation = () => {
     if (!globeRef.current || !globeData.length) return;
 
@@ -159,9 +163,10 @@ export function Globe({ globeConfig, data }: WorldProps) {
       .pointRadius(2);
   };
 
+  // Trigger animation on globe data change
   useEffect(() => {
     startAnimation();
-  }, [globeData]); // Only start animation when globeData is ready
+  }, [globeData]);
 
   return <threeGlobe ref={globeRef} />;
 }
