@@ -202,7 +202,7 @@ return preparedUniforms;
 // Helper function to flatten arrays if necessary
 function flatten(arr: number[][]): number[] {
   return arr.reduce((acc, val) => acc.concat(val), []);
-}
+};
 
 
       
