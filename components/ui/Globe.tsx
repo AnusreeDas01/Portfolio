@@ -93,7 +93,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
       buildData();
       buildMaterial();
     }
-  }, [globeRef.current]);
+  }, []);
 
   const buildMaterial = () => {
     if (!globeRef.current) return;
@@ -152,7 +152,10 @@ export function Globe({ globeConfig, data }: WorldProps) {
       .hexPolygonColor(() => defaultProps.polygonColor);
 
     startAnimation();
-  }, [globeData]);
+  }, useEffect(() => {
+  buildData();
+}, [globeData]); 
+
 
   const startAnimation = () => {
     if (!globeRef.current) return;
