@@ -209,10 +209,10 @@ const ShaderMaterial = ({
   });
 
   const getUniforms = () => {
-    const preparedUniforms: { [key: string]: { value: unknown; type: string } } = {};
+    const preparedUniforms: { [key: string]: { value: string; type: string } } = {};
 
     for (const uniformName in uniforms) {
-      const uniforms = useMemo(() => {
+      const uniform = useMemo(() => {
       switch (uniform.type) {
         case "uniform1f":
           preparedUniforms[uniformName] = { value: uniform.value, type: "1f" };
@@ -283,7 +283,7 @@ const ShaderMaterial = ({
   }, [size.width, size.height, source]);
 
   return (
-    <mesh ref={ref as unknown}>
+    <mesh ref={ref as string}>
       <planeGeometry args={[2, 2]} />
       <primitive object={material} attach="material" />
     </mesh>
