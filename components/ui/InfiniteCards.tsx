@@ -1,5 +1,5 @@
 "use client";
-import Image from "next/image";
+
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
 
@@ -25,7 +25,7 @@ export const InfiniteMovingCards = ({
 
   useEffect(() => {
     addAnimation();
-  }, [items]);
+  }, []);
   const [start, setStart] = useState(false);
   function addAnimation() {
     if (containerRef.current && scrollerRef.current) {
@@ -116,7 +116,7 @@ export const InfiniteMovingCards = ({
               <div className="relative z-20 mt-6 flex flex-row items-center">
                 {/* add this div for the profile img */}
                 <div className="me-3">
-                <Image src={item.img} alt="profile" className="w-12 h-12 rounded-full" />
+                  {/* <img src="/profile.svg" alt="profile" /> */}
                 </div>
                 <span className="flex flex-col gap-1">
                   {/* change text color, font-normal to font-bold, text-xl */}
